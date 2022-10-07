@@ -27,6 +27,7 @@ public class ArticuloControlador {
         return ResponseEntity.notFound().build();
     }
 
+    // Mostrar los articulos por el Codigo
     @GetMapping(value = "/articulo/codigo/{codigo}")
     public ResponseEntity getArticulo(@PathVariable String codigo){
         List<Articulo> articulo= articuloRepository.findAllByCodigo(codigo);
@@ -37,6 +38,8 @@ public class ArticuloControlador {
         return new ResponseEntity(articulo,HttpStatus.OK);
     }
 
+
+    // Agregar Articulos nuevos
     @PostMapping(value = "/articulo")
     public ResponseEntity crearArticulo(@RequestBody Articulo articulo){
         try {
@@ -48,6 +51,9 @@ public class ArticuloControlador {
 
     }
 
+
+
+    //Modificación del articulo por el codigo
     @PutMapping("/articulo/codigo/{codigo}")
     public ResponseEntity editarArticulos(@PathVariable String codigo,@RequestBody Articulo articulo){
         Optional<Articulo> articuloBD= articuloRepository.findByCodigo(codigo);
@@ -69,6 +75,18 @@ public class ArticuloControlador {
     }
 
 
+    //Eliminar Articulos
+    @DeleteMapping("/articulo/codigo/{codigo}")
+    public ResponseEntity eliminarArticulos(@PathVariable String codigo) {
+        Optional<Articulo> articuloBD= articuloRepository.findByCodigo(codigo);
+        if (articuloBD.isPresent()) {
+            articuloRepository.delete(articuloBD.get());
+            return ResponseEntity.noContent().build();
+        }
+        return  ResponseEntity.notFound().build();
+    }
+
+
 
 
 
@@ -76,3 +94,6 @@ public class ArticuloControlador {
 
 
 }
+
+
+
