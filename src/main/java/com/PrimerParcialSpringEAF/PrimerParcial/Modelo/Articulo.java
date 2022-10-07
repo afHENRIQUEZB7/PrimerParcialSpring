@@ -28,6 +28,7 @@ public class Articulo {
     // Fecha del articulo
     private Date fechaarticulo;
     // Categoria del articulo
+    @ManyToOne
     private  Categoria categoria;
     // stock del articulo
     @Column(nullable = false)

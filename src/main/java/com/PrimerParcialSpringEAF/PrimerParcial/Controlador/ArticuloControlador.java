@@ -48,10 +48,9 @@ public class ArticuloControlador {
 
     }
 
-    /*@PutMapping("/articulo/codigo/{codigo}")
+    @PutMapping("/articulo/codigo/{codigo}")
     public ResponseEntity editarArticulos(@PathVariable String codigo,@RequestBody Articulo articulo){
-        Optional<Articulo> articuloBD= articuloRepository.findAllByCodigo(codigo);
-        //List<Articulo> articuloBD= articuloRepository.findAllByCodigo(codigo);
+        Optional<Articulo> articuloBD= articuloRepository.findByCodigo(codigo);
         if (articuloBD.isPresent()){
             try{
                 articuloBD.get().setCodigo(articulo.getCodigo());
@@ -67,7 +66,7 @@ public class ArticuloControlador {
             }
         }
         return ResponseEntity.notFound().build();
-    }*/
+    }
 
 
 
