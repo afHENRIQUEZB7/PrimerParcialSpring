@@ -51,6 +51,16 @@ public class ArticuloControlador {
 
     }
 
+    // Visualizar todos los articulos
+    @GetMapping("/articulos")
+    public ResponseEntity ListarTodosLosArticulos(){
+        List<Articulo> articulos= articuloRepository.findAll();
+        if (articulos.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return  new ResponseEntity(articulos,HttpStatus.OK);
+    }
+
 
 
     //Modificación del articulo por el codigo
