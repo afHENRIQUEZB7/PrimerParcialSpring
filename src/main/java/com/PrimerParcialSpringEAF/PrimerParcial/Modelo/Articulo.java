@@ -17,7 +17,7 @@ public class Articulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //COdigo articulo
-    @Column(nullable = false,length = 15)
+    @Column(nullable = false,length = 15,unique = true)
     private String codigo;
     // Nombre del articulo
     @Column(nullable = false,length = 100)
