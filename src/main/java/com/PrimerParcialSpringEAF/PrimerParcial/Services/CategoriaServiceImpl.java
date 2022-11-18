@@ -2,6 +2,7 @@ package com.PrimerParcialSpringEAF.PrimerParcial.Services;
 
 import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Categoria;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.CategoriaRepository;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,8 @@ public class CategoriaServiceImpl implements  CategoriaService{
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    /*@Autowired
-    private JWTUtil jwtUtil;*/
+    @Autowired
+    private JWTUtil jwtUtil;
 
 
     @Override

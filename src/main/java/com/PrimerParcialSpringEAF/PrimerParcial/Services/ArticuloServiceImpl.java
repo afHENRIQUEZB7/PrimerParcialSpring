@@ -2,9 +2,11 @@ package com.PrimerParcialSpringEAF.PrimerParcial.Services;
 
 import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Articulo;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.ArticuloRepository;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +19,11 @@ public class ArticuloServiceImpl implements ArticuloService{
     @Autowired
     private ArticuloRepository articuloRepository;
 
-    /*@Autowired
+    @Autowired
     private JWTUtil jwtUtil;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;*/
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public ResponseEntity<Articulo> getArticuloId(long id) {
