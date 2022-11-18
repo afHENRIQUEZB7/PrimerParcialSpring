@@ -2,6 +2,7 @@ package com.PrimerParcialSpringEAF.PrimerParcial.Controlador;
 
 import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Articulo;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.ArticuloRepository;
+import com.PrimerParcialSpringEAF.PrimerParcial.Services.ArticuloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,48 +18,31 @@ public class ArticuloControlador {
     @Autowired
     private ArticuloRepository articuloRepository;
 
+    @Autowired
+    private ArticuloService articuloService;
 
     @GetMapping(value = "/articulo/{id}")
     public ResponseEntity getArticulo(@PathVariable Long id){
-        Optional<Articulo> articulo= articuloRepository.findById(id);
-        if (articulo.isPresent()){
-            return new ResponseEntity(articulo, HttpStatus.OK);
-        }
-        return ResponseEntity.notFound().build();
+      return articuloService.getArticuloId(id);
     }
 
     // Mostrar los articulos por el Codigo
     @GetMapping(value = "/articulo/codigo/{codigo}")
     public ResponseEntity getArticulo(@PathVariable String codigo){
-        List<Articulo> articulo= articuloRepository.findAllByCodigo(codigo);
-
-        if (articulo.isEmpty()){
-            return ResponseEntity.notFound().build();
-        }
-        return new ResponseEntity(articulo,HttpStatus.OK);
+        return articuloService.getArticulo(codigo);
     }
 
 
     // Agregar Articulos nuevos
     @PostMapping(value = "/articulo")
     public ResponseEntity crearArticulo(@RequestBody Articulo articulo){
-        try {
-            articuloRepository.save(articulo);
-            return new ResponseEntity(articulo, HttpStatus.CREATED);
-        }catch (Exception e){
-            return ResponseEntity.badRequest().build();
-        }
-
+        return articuloService.crearArticulo(articulo);
     }
 
     // Visualizar todos los articulos
     @GetMapping("/articulos")
     public ResponseEntity ListarTodosLosArticulos(){
-        List<Articulo> articulos= articuloRepository.findAll();
-        if (articulos.isEmpty()){
-            return ResponseEntity.notFound().build();
-        }
-        return  new ResponseEntity(articulos,HttpStatus.OK);
+        return articuloService.ListarTodosLosArticulos();
     }
 
 
@@ -66,34 +50,14 @@ public class ArticuloControlador {
     //Modificación del articulo por el codigo
     @PutMapping("/articulo/codigo/{codigo}")
     public ResponseEntity editarArticulos(@PathVariable String codigo,@RequestBody Articulo articulo){
-        Optional<Articulo> articuloBD= articuloRepository.findByCodigo(codigo);
-        if (articuloBD.isPresent()){
-            try{
-                articuloBD.get().setCodigo(articulo.getCodigo());
-                articuloBD.get().setNombre(articulo.getNombre());
-                articuloBD.get().setDescripcion(articulo.getDescripcion());
-                articuloBD.get().setStock(articulo.getStock());
-                articuloBD.get().setPreciov(articulo.getPreciov());
-                articuloBD.get().setPrecioc(articulo.getPrecioc());
-                articuloRepository.save(articuloBD.get());
-                return new ResponseEntity(articuloBD,HttpStatus.OK);
-            }catch (Exception e){
-                return ResponseEntity.badRequest().build();
-            }
-        }
-        return ResponseEntity.notFound().build();
+       return articuloService.editarArticulos(codigo,articulo);
     }
 
 
     //Eliminar Articulos
     @DeleteMapping("/articulo/codigo/{codigo}")
     public ResponseEntity eliminarArticulos(@PathVariable String codigo) {
-        Optional<Articulo> articuloBD= articuloRepository.findByCodigo(codigo);
-        if (articuloBD.isPresent()) {
-            articuloRepository.delete(articuloBD.get());
-            return ResponseEntity.noContent().build();
-        }
-        return  ResponseEntity.notFound().build();
+        return articuloService.eliminarArticulos(codigo);
     }
 
 
