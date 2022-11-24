@@ -30,6 +30,8 @@ public class Articulo {
     // Categoria del articulo
     @ManyToOne
     private  Categoria categoria;
+    @ManyToOne
+    private Usuario usuario;
     // stock del articulo
     @Column(nullable = false)
     private String stock;
@@ -39,7 +41,6 @@ public class Articulo {
     // Precio de compra del articulo
     @Column(nullable = false)
     private  Double precioc;
-
 
 
 
