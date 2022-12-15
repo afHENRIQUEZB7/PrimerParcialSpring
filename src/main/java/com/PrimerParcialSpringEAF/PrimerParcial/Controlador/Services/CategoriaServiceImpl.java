@@ -1,6 +1,6 @@
-package com.PrimerParcialSpringEAF.PrimerParcial.Services;
+package com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services;
 
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Categoria;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Categoria;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.CategoriaRepository;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,5 @@
-package com.PrimerParcialSpringEAF.PrimerParcial.services;
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Usuario;
+package com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Usuario;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.UsuarioRepository;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
 

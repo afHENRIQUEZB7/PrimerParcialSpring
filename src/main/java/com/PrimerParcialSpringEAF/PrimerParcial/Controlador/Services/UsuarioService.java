@@ -1,5 +1,5 @@
-package com.PrimerParcialSpringEAF.PrimerParcial.services;
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Usuario;
+package com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Usuario;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

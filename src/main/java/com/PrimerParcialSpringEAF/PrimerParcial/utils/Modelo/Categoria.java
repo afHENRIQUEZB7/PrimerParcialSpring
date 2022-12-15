@@ -1,4 +1,4 @@
-package com.PrimerParcialSpringEAF.PrimerParcial.Modelo;
+package com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

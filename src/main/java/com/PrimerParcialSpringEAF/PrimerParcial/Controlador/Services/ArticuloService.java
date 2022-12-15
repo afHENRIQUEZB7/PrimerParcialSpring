@@ -1,6 +1,6 @@
-package com.PrimerParcialSpringEAF.PrimerParcial.Services;
+package com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services;
 
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Articulo;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Articulo;
 import org.springframework.http.ResponseEntity;
 
 public interface ArticuloService {

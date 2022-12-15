@@ -1,6 +1,6 @@
 package com.PrimerParcialSpringEAF.PrimerParcial.Repository;
 
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Articulo;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Articulo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,22 +1,21 @@
 package com.PrimerParcialSpringEAF.PrimerParcial.Controlador;
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Usuario;
-import com.PrimerParcialSpringEAF.PrimerParcial.services.UsuarioService;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Usuario;
+import com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services.UsuarioService;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import java.util.HashMap;
 import java.util.Map;
 
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 public class UsuarioController {
 
     @Autowired

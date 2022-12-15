@@ -1,16 +1,16 @@
 package com.PrimerParcialSpringEAF.PrimerParcial.Controlador;
 
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Usuario;
-import com.PrimerParcialSpringEAF.PrimerParcial.services.UsuarioService;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Usuario;
+import com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 public class AuthController {
     @Autowired
     private UsuarioService usuarioService;

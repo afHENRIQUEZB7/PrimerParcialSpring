@@ -1,20 +1,16 @@
 package com.PrimerParcialSpringEAF.PrimerParcial.Controlador;
 
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Articulo;
-import com.PrimerParcialSpringEAF.PrimerParcial.Modelo.Categoria;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Categoria;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.CategoriaRepository;
-import com.PrimerParcialSpringEAF.PrimerParcial.Services.CategoriaService;
+import com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services.CategoriaService;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
-
+@CrossOrigin(maxAge = 3600)
 public class CategoriaControlador {
 
     @Autowired
