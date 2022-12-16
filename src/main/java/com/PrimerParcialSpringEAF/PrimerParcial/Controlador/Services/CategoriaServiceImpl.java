@@ -1,5 +1,6 @@
 package com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services;
 
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Articulo;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Categoria;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.CategoriaRepository;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
@@ -49,4 +50,15 @@ public class CategoriaServiceImpl implements  CategoriaService{
         }
         return  new ResponseEntity(categorias,HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Categoria> eliminarCategoria(Long id) {
+        Optional<Categoria> categoriaBD= categoriaRepository.findById(id);
+        if (categoriaBD.isPresent()) {
+            categoriaRepository.delete(categoriaBD.get());
+            return ResponseEntity.noContent().build();
+        }
+        return  ResponseEntity.notFound().build();
+    }
+
 }

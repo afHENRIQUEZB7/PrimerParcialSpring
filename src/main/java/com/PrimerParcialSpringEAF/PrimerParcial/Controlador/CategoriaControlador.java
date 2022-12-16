@@ -52,5 +52,15 @@ public class CategoriaControlador {
         return categoriaService.ListarTodosLasCategorias();
     }
 
+    // Eliminar categoria
+    @DeleteMapping("/categoria/{id}")
+    public ResponseEntity eliminarCategoria(@PathVariable Long id,
+                                          @RequestHeader(value = "Authorization") String token){
+        if (jwtUtil.getKey(token)== null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token no valido");
+        }
+        return categoriaService.eliminarCategoria(id);
+    }
+
 
 }
