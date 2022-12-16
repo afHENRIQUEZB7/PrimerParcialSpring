@@ -4,6 +4,7 @@ import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Articulo;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Categoria;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.CategoriaRepository;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +50,24 @@ public class CategoriaServiceImpl implements  CategoriaService{
             return ResponseEntity.notFound().build();
         }
         return  new ResponseEntity(categorias,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Categoria> modificarCategoria(Long id, Categoria categoria) {
+        Optional<Categoria> categoriaBD = categoriaRepository.findById(id);
+        if (categoriaBD.isPresent()) {
+            try {
+
+                categoriaBD.get().setNombreca(categoria.getNombreca());
+                categoriaBD.get().setDescripcionca(categoria.getDescripcionca());
+                categoriaRepository.save(categoriaBD.get());
+                return new ResponseEntity(categoriaBD, HttpStatus.OK);
+
+            } catch (Exception e) {
+                return ResponseEntity.badRequest().build();
+            }
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @Override

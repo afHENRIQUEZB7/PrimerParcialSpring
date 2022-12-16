@@ -4,10 +4,13 @@ import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Categoria;
 import com.PrimerParcialSpringEAF.PrimerParcial.Repository.CategoriaRepository;
 import com.PrimerParcialSpringEAF.PrimerParcial.Controlador.Services.CategoriaService;
 import com.PrimerParcialSpringEAF.PrimerParcial.utils.JWTUtil;
+import com.PrimerParcialSpringEAF.PrimerParcial.utils.Modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @CrossOrigin(maxAge = 3600)
@@ -60,6 +63,15 @@ public class CategoriaControlador {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token no valido");
         }
         return categoriaService.eliminarCategoria(id);
+    }
+
+    @PutMapping("/categoria/{id}")
+    public ResponseEntity editarCategoria(@PathVariable Long id, @Valid @RequestBody Categoria categoria,
+                                        @RequestHeader(value = "Authorization") String token){
+        if (jwtUtil.getKey(token)== null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token no valido");
+        }
+        return categoriaService.modificarCategoria(id, categoria);
     }
 
 
