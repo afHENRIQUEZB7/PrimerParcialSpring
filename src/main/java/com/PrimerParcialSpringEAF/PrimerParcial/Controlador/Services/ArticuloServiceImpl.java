@@ -36,12 +36,13 @@ public class ArticuloServiceImpl implements ArticuloService{
 
     @Override
     public ResponseEntity<Articulo> getArticulo(String codigo) {
-        List<Articulo> articulo= articuloRepository.findAllByCodigo(codigo);
+        Optional<Articulo> articulo= articuloRepository.findByCodigo(codigo);
 
-        if (articulo.isEmpty()){
-            return ResponseEntity.notFound().build();
+        if (articulo.isPresent()){
+            return new ResponseEntity(articulo,HttpStatus.OK);
+
         }
-        return new ResponseEntity(articulo,HttpStatus.OK);
+        return ResponseEntity.notFound().build();
     }
 
     @Override

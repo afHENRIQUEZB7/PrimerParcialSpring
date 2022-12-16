@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController
+
 @CrossOrigin(maxAge = 3600)
+@RestController
+
 public class CategoriaControlador {
 
     @Autowired

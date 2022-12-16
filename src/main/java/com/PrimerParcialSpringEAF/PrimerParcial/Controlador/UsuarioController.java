@@ -14,8 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@RestController
 @CrossOrigin(maxAge = 3600)
+@RestController
+
 public class UsuarioController {
 
     @Autowired
